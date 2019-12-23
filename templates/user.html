@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body uk-height-viewport class="uk-background-muted">
+    <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+            <h3 class="uk-text-center">{{ dp.name_department}}</h3>
+
+            <ul class="uk-list">
+                {% for u in user %}
+                    <li>
+                        <a class="uk-link-reset" href="{% url 'result_user' u.id %}">
+                            <div>
+                                <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                                    <div class="uk-clearfix">
+                                        <div class="uk-float-left">
+                                            <h3 class="uk-margin-remove">{{ u.create_date }}</h3>
+                                        </div>
+                                        <div class="uk-float-right">
+                                            <h3 class="uk-margin-remove">{{ u.name_lastname }}</h3>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+{% endblock %}

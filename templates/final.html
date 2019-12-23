@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body uk-height-viewport>
+    <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-background-primary" uk-height-viewport>
+        <div class="uk-container uk-margin-remove uk-width-1-1  uk-flex uk-flex-center ">
+    
+            <div class="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-width-1-3@l">
+                <h1 class="uk-card-title uk-text-center uk-margin-remove-bottom">คุณได้ทำแบบทดสอบครบทุกข้อแล้ว <br> ขอบคุณค่ะ/ครับ</h1>
+                <div class="uk-margin uk-text-center">
+                    <p>คุณตอบ "ใช่" ไปทั้งสิ้น {{ yes }} ข้อ</p>
+                    <p>คุณตอบ "ไม่ใช่" ไปทั้งสิ้น {{ no }} ข้อ</p>
+                    <p>คุณข้ามคำถามไปทั้งสิ้น  {{ none }} ข้อ</p>
+                    <br><br>
+                    <a class="uk-link-reset" href="{% url 'password' %}"><button type="submit" class="uk-button uk-button-primary">เริ่มทำแบบทดสอบ</button></a>
+                    
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</body>
+
+{% endblock %}

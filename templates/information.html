@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body uk-height-viewport>
+    <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-background-primary" uk-height-viewport>
+        <div class="uk-container uk-margin-remove uk-width-1-1  uk-flex uk-flex-center ">
+    
+            <div class="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-width-1-3@l">
+                <h1 class="uk-card-title uk-text-center uk-margin-remove-bottom">ข้อมูลส่วนบุคคล</h1>
+                <form method="post" class="uk-form-horizontal uk-margin-large">
+                    {% csrf_token %}
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">ID </label>
+                        <div class="uk-form-controls">
+                            <input name="department" class="uk-input" type="text" value="{{ dp }}" placeholder="" disabled >
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">รหัสประจำตัวผู้รับบริการ</label>
+                        <div class="uk-form-controls">
+                            <input name="identcode" class="uk-input" type="text" placeholder="เลขบัตรประจำตัวประชาชน, เลขรหัสนักศึกษา, เลขรหัสโรงพยาบาล">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">ชื่อ-นามสกุล</label>
+                        <div class="uk-form-controls">
+                            <input name="name" class="uk-input" type="text" placeholder="ดวงดี มีสุข">
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <div class="uk-form-label">เพศ*</div>
+                        <div class="uk-form-controls uk-form-controls-text">
+                            <label><input value="male" class="uk-radio" type="radio" name="sex"> ชาย</label><br>
+                            <label><input value="female" class="uk-radio" type="radio" name="sex"> หญิง</label>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">อายุ*</label>
+                        <div class="uk-form-controls">
+                            <input name="age" class="uk-input"  type="number" placeholder="20">
+                        </div>
+                    </div>
+                    <!-- <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">หมายเหตุ (Note)</label>
+                        <div class="uk-form-controls">
+                            <textarea class="uk-textarea" rows="5" placeholder="เช่น โรคประจำตัว แพ้อาหาร ..."></textarea>
+                        </div>
+                    </div> -->
+                    <div class="uk-margin uk-text-center">
+                        <button type="submit" class="uk-button uk-button-primary">ตกลง</button>
+                    </div>
+                    
+                    
+                
+                </form>
+            </div>
+    
+        </div>
+    </div>
+</body>
+
+{% endblock %}

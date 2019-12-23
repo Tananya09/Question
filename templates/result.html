@@ -1,0 +1,140 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<body uk-height-viewport class="uk-background-muted">
+    <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+            <div class="uk-card uk-card-default uk-card-body">
+                <h1 class="uk-card-title uk-text-center uk-margin-remove-bottom">ข้อมูลส่วนบุคคล</h1>
+                <form method="post" class="uk-form-horizontal uk-margin-large">
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">ID </label>
+                        <div class="uk-form-controls">
+                            <input name="department" class="uk-input" type="text" value="{{ u.department }}" disabled>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">รหัสประจำตัวผู้รับบริการ</label>
+                        <div class="uk-form-controls">
+                            <input name="identcode" class="uk-input" type="text" value="{{ u.ident_number }}" disabled>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">ชื่อ-นามสกุล</label>
+                        <div class="uk-form-controls">
+                            <input name="name" class="uk-input" type="text" value="{{ u.name_lastname }}" disabled>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">เพศ</label>
+                        <div class="uk-form-controls">
+                            <input name="name" class="uk-input" type="text" value="{{ u.sex }}" disabled>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">อายุ</label>
+                        <div class="uk-form-controls">
+                            <input name="age" class="uk-input"  type="number" value="{{ u.age }}" disabled>
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="form-horizontal-text">สร้างเมื่อ</label>
+                        <div class="uk-form-controls">
+                            <input name="age" class="uk-input"  type="text" value="{{ u.create_date }}" disabled>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+
+            <ul class="uk-list">
+                <li>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                            <canvas id="pie_chart" style="width: auto;height: 200px;"></canvas>
+                        
+                        </div>
+                    </div>
+                    
+                </li>
+                <li>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                            <canvas id="myChart" style="width: auto;height: 100px;"></canvas>
+                        
+                        </div>
+                    </div>
+                    
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [{% for i in group %} '{{ i }}' {% if not forloop.last %}, {% endif %}{% endfor %} ],
+            datasets: [{
+                label: 'Score',
+                data: [{% for s in score %} {{ s.score }} {% if not forloop.last %}, {% endif %}{% endfor %} ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    
+
+    var pie = document.getElementById('pie_chart').getContext('2d');
+    var piechart = new Chart(pie, {
+            type: 'pie',
+            data: {
+                labels: ['ใช่', 'ไม่ใช่', 'ไม่ตอบคำถาม'],
+                datasets: [{
+                    data: [ {{ yes }} , {{ no }} , {{ none }}],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 0
+                }]
+            }
+        }
+    );
+</script>
+{% endblock %}

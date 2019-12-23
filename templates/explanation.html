@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body uk-height-viewport>
+    <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-background-primary" uk-height-viewport>
+        <div class="uk-container uk-margin-remove uk-width-1-1  uk-flex uk-flex-center ">
+    
+            <div class="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-width-1-3@l">
+                <h1 class="uk-card-title uk-text-center uk-margin-remove-bottom">ข้อตกลงในการทำแบบทดสอบ</h1>
+                <div class="uk-margin uk-text-center">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni fugit voluptates neque unde delectus iusto! Aliquid velit necessitatibus soluta! Inventore id consectetur rem perspiciatis asperiores distinctio quia a consequatur quo aut iste nesciunt tempora, expedita quisquam deserunt blanditiis tempore aliquam, non fugit nostrum voluptatibus voluptatum! Aspernatur, molestias dolor minus voluptatem tempora nisi. Enim adipisci deleniti sit laborum, illum qui, animi pariatur suscipit molestiae ipsa quam excepturi corporis atque tempore maiores odit ut voluptates non expedita doloremque deserunt nobis, unde reiciendis. Veritatis fugit magni incidunt distinctio quae maiores cum sapiente alias, voluptates nam soluta nesciunt voluptatum a voluptatibus harum vel ipsum, debitis consequatur corrupti quis dolorum iusto autem iste accusantium. Quo obcaecati quisquam asperiores dolores, vero voluptatum similique voluptatibus dolore sapiente? Odio quasi harum expedita, officia eveniet labore. Tenetur, ut expedita. Nihil repellat id eveniet, eius labore tenetur ab dolorum, reprehenderit officia nulla asperiores aliquam facilis magnam possimus dolorem distinctio voluptatem error at aspernatur cumque beatae? A, molestias autem nisi distinctio aperiam quis eos sint consectetur asperiores maiores, dicta voluptatibus dolorem ratione optio itaque soluta quas modi harum? Ad magnam facilis earum quam officia optio illum nisi at inventore dicta voluptas adipisci nemo recusandae modi, temporibus et dolor? Aliquam, a quas?</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <label><input name="accept" class="uk-checkbox" type="checkbox"> ฉันอ่านและยอมรับข้อตกลงข้างต้น</label>
+                        <br><br>
+                        <button type="submit" class="uk-button uk-button-primary">เริ่มทำแบบทดสอบ</button>
+                    </form>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</body>
+
+{% endblock %}

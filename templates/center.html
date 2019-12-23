@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body uk-height-viewport>
+    
+    <div class="uk-section uk-section-primary uk-light uk-flex uk-flex-center uk-flex-middle" uk-height-viewport>
+        
+        <div class="uk-container uk-text-center">
+            <h1 id = "test"></h1>
+            <h1>เลือกโรงพยาบาล</h1>
+            <form>
+                <div class="uk-margin">
+                    <select id="center" onchange="setCenter()" class="uk-select">
+                        {% for c in center %}
+                            <option value="{{ c.center_name }}">{{ c.center_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <a class="uk-link-reset" href="{% url 'password' %}">
+                    <button type="button" class="uk-button uk-button-default uk-background-default uk-width-1-1" style="background-color: white;color: gray">ตกลง</button>
+                </a>
+                
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        var name = ''
+        function setCenter(){
+            name = document.getElementById("center").value 
+        }
+        function click(){
+            $.ajax({
+                // points to the url where your data will be posted
+                url:'/password/',
+                // post for security reason
+                type: "POST",
+                // data that you will like to return 
+                data: {name : name}
+            });
+        }
+
+    </script>
+</body>
+
+
+{% endblock %}

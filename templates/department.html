@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body uk-height-viewport class="uk-background-muted">
+    <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+            <h3 class="uk-text-center">Department</h3>
+
+            <ul class="uk-list">
+                {% for d in dp %}
+                    <li>
+                        <a class="uk-link-reset" href="{% url 'dashboard_user' d.id %}">
+                            <div>
+                                <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                                    <div class="uk-clearfix">
+                                        <div class="uk-float-left">
+                                            <h3 class="uk-margin-remove">{{ d.name_department }}</h3>
+                                        </div>
+                                        <div class="uk-float-right">
+                                            <h3 class="uk-margin-remove">{{ d.status }}</h3>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+{% endblock %}

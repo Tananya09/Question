@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body uk-height-viewport>
+    <div class="uk-section uk-flex uk-flex-center uk-flex-middle uk-background-primary" uk-height-viewport>
+        <div class="uk-container uk-margin-remove uk-width-1-1  uk-flex uk-flex-center ">
+    
+            <div class="uk-card uk-card-default uk-card-body uk-width-2-3@m uk-width-1-3@l">
+        
+                    <h1 class="uk-card-title uk-text-center uk-margin-remove-bottom">คำถามข้อที่ {{questions.number}}</h1>
+                    <div class="uk-margin uk-text-center">
+                        <p>{{questions.question}}</p>
+                        
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input name="num" type="text" value="{{questions.number}}" style="display: none">
+                            <div class="uk-form-controls uk-form-controls-text">
+                                <label><input value="Yes" class="uk-radio" type="radio" name="ans"> ใช่</label><br>
+                                <label><input value="No" class="uk-radio" type="radio" name="ans"> ไม่ใช่</label>
+                            </div>
+                            <br>
+                            <div class="uk-clearfix">
+                                <div class="uk-float-left">
+                                    {% if prv %}
+                                        <button type="submit" name="prev" class="uk-button uk-button-default">prev</button>
+                                    {% endif %}
+                                </div>
+                                <div class="uk-float-right">
+                                    {% if nxt %}
+                                        <button type="submit" name="next" class="uk-button uk-button-primary">next</button>
+                                    {% else %}
+                                        <button type="submit" name="final" class="uk-button uk-button-primary">Final</button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+            </div>
+    
+        </div>
+    </div>
+</body>
+
+{% endblock %}
