@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': os.environ['POSTGRES_DB'],
         'USER': os.environ['POSTGRES_USER'],
         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-        'HOST': postgres,
+        'HOST': question-db,
         'PORT': 3306
     }
 }
