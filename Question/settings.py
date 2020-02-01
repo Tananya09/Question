@@ -89,7 +89,7 @@ DATABASES = {
         'USER': os.environ['POSTGRES_USER'],
         'PASSWORD': os.environ['POSTGRES_PASSWORD'],
         'HOST': 'question-db',
-        'PORT': 3306
+        'PORT': 5432
     }
 }
 
