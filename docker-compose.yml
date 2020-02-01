@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  question-db:
+    image: postgres:10.4
+    volumes:
+      - ../volume/question:/var/lib/postgresql/data
+    env_file:
+      - production.env
+    restart: always
+
+  question-django:
+    build: .
+    env_file:
+      - production.env
+    depends_on:
+      - question-db
+    restart: always
+    command: "sh run.sh"
+    volumes:
+      - .:/Question
+    ports:
+      - 80:80
